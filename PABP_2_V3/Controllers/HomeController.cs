@@ -15,6 +15,8 @@ namespace PABP_2_V3.Controllers
 
         public ActionResult About()
         {
+            NorthwindEntities nVE = new NorthwindEntities();
+            nVE.Customers.Select()
             ViewBag.Message = "Your application description page.";
 
             return View();

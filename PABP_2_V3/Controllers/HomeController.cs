@@ -15,9 +15,15 @@ namespace PABP_2_V3.Controllers
 
         public ActionResult About()
         {
-            NorthwindEntities nVE = new NorthwindEntities();
-            nVE.Customers.Select()
-            ViewBag.Message = "Your application description page.";
+            var nVE = new NorthwindEntities();
+            var a = from c in nVE.Invoices
+                    select c.ShipName;
+            string text = "";
+            foreach (var item in a.ToList())
+            {
+                text += item;
+            }
+            ViewBag.Message = text;
 
             return View();
         }

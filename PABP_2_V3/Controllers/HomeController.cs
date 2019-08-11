@@ -34,5 +34,24 @@ namespace PABP_2_V3.Controllers
 
             return View();
         }
+        
+        public ActionResult CustomerDemographicsView()
+        {
+            ViewBag.Message = "Your contact page.";
+            var nVE = new NorthwindEntities();
+            var a = from c in nVE.CustomerDemographics
+                    select c;
+            ViewData["Model"] = a.ToList();
+            
+
+            return View();
+        }
+
+        public ActionResult CustomerDemographicsEdit()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 }

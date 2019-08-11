@@ -179,6 +179,8 @@
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerDemographicsController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Current_Product_List.cs">
@@ -367,6 +369,18 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Home\CustomerDemographicsEdit.cshtml" />
+    <Content Include="Views\Home\CustomerDemographicsView.cshtml" />
+    <Content Include="Views\CustomerDemographics\Create.cshtml" />
+    <Content Include="Views\CustomerDemographics\Delete.cshtml" />
+    <Content Include="Views\CustomerDemographics\Details.cshtml" />
+    <Content Include="Views\CustomerDemographics\Edit.cshtml" />
+    <Content Include="Views\CustomerDemographics\Index.cshtml" />
+    <Content Include="Views\Customers\Create.cshtml" />
+    <Content Include="Views\Customers\Delete.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Customers\Edit.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

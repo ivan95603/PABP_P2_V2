@@ -8,14 +8,16 @@ namespace PABP_2_V3.Controllers
 {
     public class HomeController : Controller
     {
+        NorthwindEntities nVE = new NorthwindEntities();
         public ActionResult Index()
         {
+            
             return View();
         }
 
         public ActionResult About()
         {
-            var nVE = new NorthwindEntities();
+            
             var a = from c in nVE.Invoices
                     select c.ShipName;
             string text = "";
@@ -53,5 +55,25 @@ namespace PABP_2_V3.Controllers
 
             return View();
         }
+
+
+
+
+        /***
+         * CETVRTA STAVKA
+        */
+
+        public ActionResult ReturnProductsForSuppliersAndCategories()
+        {
+            string kategorija = "Beverages";
+            string kompanija = "Exotic Liquids";
+            List<Products> products = (from x in nVE.Products
+                           where (x.Categories.CategoryName == kategorija && x.Suppliers.CompanyName == kompanija)
+                           select x).ToList();
+
+            return View(products);
+        }
+
+
     }
 }

@@ -17,7 +17,13 @@ namespace PABP_2_V3.Controllers
         // GET: CustomerDemographics
         public ActionResult Index()
         {
-            return View(db.CustomerDemographics.ToList());
+            List<CustomerDemographics> temp = db.CustomerDemographics.ToList();
+            foreach (var item in temp)
+            {
+                item.CustomerTypeID = item.CustomerTypeID.TrimEnd(' ');
+                System.Diagnostics.Debug.WriteLine(item.CustomerTypeID);
+            }
+            return View(temp);
         }
 
         // GET: CustomerDemographics/Details/5
@@ -31,6 +37,10 @@ namespace PABP_2_V3.Controllers
             if (customerDemographics == null)
             {
                 return HttpNotFound();
+            }
+            else
+            {
+                customerDemographics.CustomerTypeID = customerDemographics.CustomerTypeID.TrimEnd(' ');
             }
             return View(customerDemographics);
         }
@@ -66,9 +76,14 @@ namespace PABP_2_V3.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             CustomerDemographics customerDemographics = db.CustomerDemographics.Find(id);
+            
             if (customerDemographics == null)
             {
                 return HttpNotFound();
+            }
+            else
+            {
+                customerDemographics.CustomerTypeID = customerDemographics.CustomerTypeID.TrimEnd(' ');
             }
             return View(customerDemographics);
         }
@@ -100,6 +115,10 @@ namespace PABP_2_V3.Controllers
             if (customerDemographics == null)
             {
                 return HttpNotFound();
+            }
+            else
+            {
+                customerDemographics.CustomerTypeID = customerDemographics.CustomerTypeID.TrimEnd(' ');
             }
             return View(customerDemographics);
         }

@@ -199,11 +199,11 @@ namespace PABP_2_V3.Controllers
         /***
          * CETVRTA STAVKA
         */
-
-        public ActionResult ReturnProductsForSuppliersAndCategories()
+        //http://localhost:12371/Home/ReturnProductsForSuppliersAndCategories/?kategorija=Beverages&kompanija=Exotic%20Liquids
+        public ActionResult ReturnProductsForSuppliersAndCategories(string kategorija, string kompanija)
         {
-            string kategorija = "Beverages";
-            string kompanija = "Exotic Liquids";
+            //string kategorija = "Beverages";
+            //string kompanija = "Exotic Liquids";
             List<Products> products = (from x in nVE.Products
                            where (x.Categories.CategoryName == kategorija && x.Suppliers.CompanyName == kompanija)
                            select x).ToList();
@@ -213,18 +213,4 @@ namespace PABP_2_V3.Controllers
 
 
     }
-
-    class Rezultat
-    {
-        public string territories;
-        public string region;
-        public int numberOfEmployees;
-
-        public override string ToString()
-        {
-            return string.Format("Territories:{0}, Region:{1}, numberOfEmployees:{2}", territories, region, numberOfEmployees);
-        }
-
-    }
-
 }

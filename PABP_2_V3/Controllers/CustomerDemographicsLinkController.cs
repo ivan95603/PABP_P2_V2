@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 
 namespace PABP_2_V3.Controllers
 {
@@ -13,25 +14,57 @@ namespace PABP_2_V3.Controllers
         // GET: CustomerDemographicsLink
         public ActionResult Index(string DemographicsSelection, string CustomerSelection)
         {
-            if (DemographicsSelection != null && CustomerSelection != null)
-            {
-                // TODO Proveriti da li customer postoji proveriti da li demographic id postoji ukoliko oba postoje dodati link
-            }
-
             List<CustomerDemographics> customerDemographics = db.CustomerDemographics.ToList();
             foreach (var item in customerDemographics)
             {
-                item.CustomerTypeID = item.CustomerTypeID.TrimEnd(' ');           
+                item.CustomerTypeID = item.CustomerTypeID.TrimEnd(' ');
             }
+
+            if (DemographicsSelection != null && CustomerSelection != null)
+            {
+               // CustomerDemographics csd = customerDemographics.First(s => s.CustomerTypeID == DemographicsSelection);
+               // Customers csm = db.Customers.First(s => s.CustomerID == CustomerSelection);
+                
+                if ((customerDemographics.First(s => s.CustomerTypeID == DemographicsSelection) != null) && (db.Customers.First(s => s.CustomerID == CustomerSelection) != null))
+                {
+                    db.CustomerDemographics.Find(DemographicsSelection).Customers.Add(db.Customers.First(s => s.CustomerID == CustomerSelection));
+                    db.SaveChanges();
+                }              
+            }
+
+
             ViewBag.CustomerDemographics = customerDemographics;
             ViewBag.Customers = db.Customers.ToList();
 
 
             return View(customerDemographics);
-
-
         }
 
+
+        public ActionResult Delete(string CustomerTypeID, string CustomerID)
+        {
+            if ((CustomerTypeID == null) || (CustomerID == null))
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+
+            CustomerDemographics customerDemographics = db.CustomerDemographics.Find(CustomerTypeID);
+            if (customerDemographics == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                //System.Diagnostics.Debug.WriteLine(CustomerTypeID + " || " + CustomerID);
+                db.CustomerDemographics.Find(CustomerTypeID).Customers.Remove(db.Customers.Find(CustomerID));
+            }
+            db.SaveChanges();
+
+
+
+            return Redirect("Index");
+        }
         // TODO Napraviti delete metodu za brisanje linka
     }
 }

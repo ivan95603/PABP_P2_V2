@@ -52,7 +52,7 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.CustomerTypeID })
+                    @Html.ActionLink("Delete", "Delete", new { CustomerTypeID = item.CustomerTypeID, CustomerID = item2.CustomerID })
                 </td>
             </tr>
         }

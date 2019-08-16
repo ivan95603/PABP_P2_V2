@@ -128,9 +128,18 @@ namespace PABP_2_V3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            CustomerDemographics customerDemographics = db.CustomerDemographics.Find(id);
-            db.CustomerDemographics.Remove(customerDemographics);
-            db.SaveChanges();
+            try
+            {
+                CustomerDemographics customerDemographics = db.CustomerDemographics.Find(id);
+                db.CustomerDemographics.Remove(customerDemographics);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            //////////////////////////////////////////////////////////////
             return RedirectToAction("Index");
         }
 

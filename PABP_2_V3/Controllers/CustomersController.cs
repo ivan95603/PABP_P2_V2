@@ -16,8 +16,15 @@ namespace PABP_2_V3.Controllers
 
         // GET: Customers
         public ActionResult Index()
-        {
-            return View(db.Customers.ToList());
+        {          
+            List<Customers> customers = db.Customers.ToList();
+            foreach (var item in customers)
+            {
+                item.CustomerID = item.CustomerID.TrimEnd(' ');
+            }
+
+            return View(customers);
+            //return View(db.Customers.ToList());
         }
 
         // GET: Customers/Details/5
@@ -32,6 +39,7 @@ namespace PABP_2_V3.Controllers
             {
                 return HttpNotFound();
             }
+            customers.CustomerID = customers.CustomerID.TrimEnd(' ');
             return View(customers);
         }
 
@@ -70,6 +78,8 @@ namespace PABP_2_V3.Controllers
             {
                 return HttpNotFound();
             }
+
+            customers.CustomerID = customers.CustomerID.TrimEnd(' ');
             return View(customers);
         }
 
@@ -109,9 +119,17 @@ namespace PABP_2_V3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Customers customers = db.Customers.Find(id);
-            db.Customers.Remove(customers);
-            db.SaveChanges();
+            try
+            {
+                Customers customers = db.Customers.Find(id);
+                db.Customers.Remove(customers);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+
+            }
+
             return RedirectToAction("Index");
         }
 

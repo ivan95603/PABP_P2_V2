@@ -125,8 +125,6 @@ namespace PABP_2_V3.Controllers
 
 
 
-
-
             /*   List<Employees> employees = nVE.Employees.ToList();
                //var result = employees.GroupBy(x => new { x.Territories, x.Region }).Count();
                var authorCategoryRecipes =
@@ -166,16 +164,14 @@ namespace PABP_2_V3.Controllers
                     }
 
                 }*/
-
-
-
-
         }
 
         /***
+         * 
          * CETVRTA STAVKA
+         * 
         */
-        // TODO Napraviti View za ovaj odabir kao sto je uradjeno u stavki 3
+
         // http://localhost:12371/Home/ReturnProductsForSuppliersAndCategories/?kategorija=Beverages&kompanija=Exotic%20Liquids
         public ActionResult ReturnProductsForSuppliersAndCategories(string kategorija, string kompanija)
         {
@@ -194,7 +190,5 @@ namespace PABP_2_V3.Controllers
 
             return View(products);
         }
-        // TODO Pocistiti sav ostali kod visak i srediti linkove
-
     }
 }

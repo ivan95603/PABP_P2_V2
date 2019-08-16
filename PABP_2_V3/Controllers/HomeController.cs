@@ -200,11 +200,18 @@ namespace PABP_2_V3.Controllers
          * CETVRTA STAVKA
         */
         // TODO Napraviti View za ovaj odabir kao sto je uradjeno u stavki 3
-        //http://localhost:12371/Home/ReturnProductsForSuppliersAndCategories/?kategorija=Beverages&kompanija=Exotic%20Liquids
+        // http://localhost:12371/Home/ReturnProductsForSuppliersAndCategories/?kategorija=Beverages&kompanija=Exotic%20Liquids
         public ActionResult ReturnProductsForSuppliersAndCategories(string kategorija, string kompanija)
         {
             //string kategorija = "Beverages";
             //string kompanija = "Exotic Liquids";
+
+            List<Categories> categories = nVE.Categories.ToList();
+            List<Suppliers> suppliers = nVE.Suppliers.ToList();
+
+            ViewBag.Categories = categories;
+            ViewBag.Suppliers = suppliers;
+            
             List<Products> products = (from x in nVE.Products
                            where (x.Categories.CategoryName == kategorija && x.Suppliers.CompanyName == kompanija)
                            select x).ToList();

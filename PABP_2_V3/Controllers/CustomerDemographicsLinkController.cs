@@ -61,10 +61,7 @@ namespace PABP_2_V3.Controllers
             }
             db.SaveChanges();
 
-
-
             return Redirect("Index");
         }
-        // TODO Napraviti delete metodu za brisanje linka
     }
 }

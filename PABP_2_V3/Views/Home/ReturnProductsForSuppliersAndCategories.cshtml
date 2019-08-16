@@ -3,6 +3,27 @@
 @{
     ViewBag.Title = "ReturnProductsForSuppliersAndCategories";
 }
+<br>
+<h2>Odaberite dobavljaca i kategoriju:</h2>
+<form method="get">
+    Suppliers:<br>
+    <select name="kompanija">
+        @foreach (var item in ViewBag.Suppliers)
+        {
+            <option value="@item.CompanyName"> @item.CompanyName </option>
+        }
+    </select>
+    <br>
+    Category:<br>
+    <select name="kategorija">
+        @foreach (var item in ViewBag.Categories)
+        {
+            <option value="@item.CategoryName"> @item.CategoryName </option>
+        }
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+</form> 
 
 <h2>Pronadjeni proizvodi za izabranog dobavljaca i kategoriju</h2>
 

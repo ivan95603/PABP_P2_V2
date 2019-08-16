@@ -350,8 +350,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\CustomerDemographicsEdit.cshtml" />
-    <Content Include="Views\Home\CustomerDemographicsView.cshtml" />
     <Content Include="Views\CustomerDemographics\Create.cshtml" />
     <Content Include="Views\CustomerDemographics\Delete.cshtml" />
     <Content Include="Views\CustomerDemographics\Details.cshtml" />

@@ -15,27 +15,21 @@ namespace PABP_2_V3.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
+        //public ActionResult About()
+        //{
             
-            var a = from c in nVE.Invoices
-                    select c.ShipName;
-            string text = "";
-            foreach (var item in a.ToList())
-            {
-                text += item;
-            }
-            ViewBag.Message = text;
+        //    var a = from c in nVE.Invoices
+        //            select c.ShipName;
+        //    string text = "";
+        //    foreach (var item in a.ToList())
+        //    {
+        //        text += item;
+        //    }
+        //    ViewBag.Message = text;
 
-            return View();
-        }
+        //    return View();
+        //}
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
         // TODO Proveriti da li ovo nesto radi
         public ActionResult CustomerDemographicsView()
         {

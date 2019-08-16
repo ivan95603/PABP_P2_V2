@@ -8,7 +8,7 @@ namespace PABP_2_V3
     {
         public void Configuration(IAppBuilder app)
         {
-            ConfigureAuth(app);
+          
         }
     }
 }

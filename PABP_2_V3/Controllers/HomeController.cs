@@ -14,7 +14,7 @@ namespace PABP_2_V3.Controllers
             
             return View();
         }
-        /////////////////////////////////////////////////////////TEST//////////////////////////////////////
+
         //public ActionResult About()
         //{
             

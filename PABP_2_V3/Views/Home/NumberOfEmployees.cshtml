@@ -3,6 +3,53 @@
     ViewBag.Title = "NumberOfEmployees";
 }
 
-<h2>NumberOfEmployees</h2>
+@*<h2>NumberOfEmployees</h2>*@
+<br>
+@foreach (var item in ViewBag.regions)
+{
+    @*<h2>Region: @item.TerritoryDescription , NumberOfEmployeesInRegion: @item.NumberOfEmployeesInRegion()</h2>*@
 
-@Html.Raw(ViewBag.HtmlOutput)
+    <div class="container">
+        <div class="jumbotron">
+            <h1>@item.TerritoryDescription</h1>
+            <p>
+                Broj zaposlenih u regionu: @item.NumberOfEmployeesInRegion()
+            </p>
+        </div>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>TerritoryDescription</th>
+                <th>NumberOfEmployeesInTerritory</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+            @foreach (var item2 in item.TerritoriesInCurrentRegion)
+            {
+                <tr>
+                    <td>@item2.TerritoryDescription</td>
+                    <td>@item2.Employees.Count</td>
+                </tr>
+                @*<p>Territory: @item2.TerritoryDescription , NumberOfemployeesInTerritory @item2.Employees.Count</p>*@
+            }
+
+
+
+        </tbody>
+    </table>
+
+
+
+
+
+
+
+    
+}
+
+
+@*@Html.Raw(ViewBag.HtmlOutput)*@

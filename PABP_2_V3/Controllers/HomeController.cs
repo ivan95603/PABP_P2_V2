@@ -103,12 +103,14 @@ namespace PABP_2_V3.Controllers
             //        temp += "<p>" + "Teritorija: " + item2.TerritoryDescription + ", BrojZaposlenih: " + item2.Employees.Count() + "<p>";    
             //    }
             //}
+
+
+            //////////////////////////////
+            /*
             int trenutniRegionCount = 0;
             string trenutniRegionText = "";
             foreach (var item in nVE.Region)
             {
-                
-
                 foreach (var item2 in item.Territories)
                 {
                     trenutniRegionCount += item2.Employees.Count();
@@ -121,6 +123,27 @@ namespace PABP_2_V3.Controllers
             }
 
             ViewBag.HtmlOutput = temp;
+            //return View();
+
+            */
+
+            List<PABP_2_V3.Models.CustomRegionEmployees> regions = new List<Models.CustomRegionEmployees>();
+            foreach (Region item in nVE.Region)
+            {
+                regions.Add(new Models.CustomRegionEmployees(item.RegionDescription, item.Territories.ToList()));
+
+               /* foreach (var item2 in item.Territories)
+                {
+                    trenutniRegionCount += item2.Employees.Count();
+                    trenutniRegionText += "<p>" + "Teritorija: " + item2.TerritoryDescription + ", BrojZaposlenih: " + item2.Employees.Count() + "<p>";
+                }
+                temp += "<h1>" + item.RegionDescription + ", Broj zaposlenih u regionu: " + trenutniRegionCount + "</h1><br>";
+                temp += trenutniRegionText;
+                trenutniRegionCount = 0;
+                trenutniRegionText = "";*/
+            }
+            ViewBag.regions = regions;
+            int a = 4;
             return View();
 
 
